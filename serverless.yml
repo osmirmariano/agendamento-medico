@@ -1,0 +1,32 @@
+
+service: <Nome>
+
+custom:
+  bucket: ""
+  defaultStage: prod
+  profiles:
+    prod: api_keyze
+    dev: api_keyze
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  environment:
+    STAGE: '$opt:stage, self:custom.defaultStage'
+  stage: '$opt:stage, self:custom.defaultStage'
+  profile: '$self:custom.profiles.$self:provider.stage'
+  region: 'Sua região da AWS'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource: "arn:aws:s3:::'$'{self:custom.bucket}/*"
+
+functions:
+  app:
+    handler: app.handler
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
+    environment:
+      BUCKET: '$self:custom.bucket'

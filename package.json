@@ -1,0 +1,31 @@
+{
+  "name": "api_keyze",
+  "version": "1.0.0",
+  "description": "Api para agendamento de consulta para TCC da Keyze",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "js-base64": "^2.5.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^5.8.11",
+    "nodemon": "^2.0.2",
+    "serverless-http": "^2.3.1"
+  }
+}
