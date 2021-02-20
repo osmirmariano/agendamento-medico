@@ -5,7 +5,11 @@ class Preparation {
 
     async store (req, res) {
         try {
-            let createPre = await preparations.create(req.body);
+            let body = {
+                ...req.body,
+                scheduling_id: req.query.scheduling_id
+            }
+            let createPre = await preparations.create(body);
             return res.status(200).json({
                 messageCode: 0,
                 message: {

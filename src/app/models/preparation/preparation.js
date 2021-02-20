@@ -11,6 +11,10 @@ const preparationSchema = mongoose.Schema({
         default: null,
         required: [true, 'Descrição do exame obrigatário.'] 
     },
+    scheduling_id: { 
+        type: mongoose.Schema.Types.ObjectId, ref: 'scheduling', 
+        default: null 
+    },
     registered: { type: Date, default: Date.now },
     updated: { type: Date, default: null },
 });
