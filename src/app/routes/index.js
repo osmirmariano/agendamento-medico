@@ -11,6 +11,7 @@ router.use("/login", require("./login/login"));
 router.use("/user", require("./user/user"));
 router.use("/scheduling", require("./scheduling/scheduling"));
 router.use("/preparation", require("./preparation/preparation"));
+router.use("/admin", require("./admin/admin"));
 // router.use("/clinic", require("./clinic/clinic"));
 
 module.exports = router;
