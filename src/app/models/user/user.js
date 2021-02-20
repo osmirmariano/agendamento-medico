@@ -44,40 +44,6 @@ const usersSchema = mongoose.Schema({
     permissions: [{
         type: String
     }],
-    location: {
-        number: { 
-            type: String,
-            default: null
-        },
-        cep: { 
-            type: String,
-            default: null
-        },
-        address: {
-            type: String,
-            default: null
-        },
-        complement: { 
-            type: String,
-            default: null
-        },
-        neighborhood: { 
-            type: String, 
-            default: null
-        },
-        city: {
-            type: String,
-            default: null
-        },
-        uf: {
-            type: String,
-            default: null
-        },
-        country: {
-            type: String,
-            default: null
-        }
-    },
     birth_date: {
         type: Date,
     },
@@ -89,9 +55,13 @@ const usersSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    location_id: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'location', 
+        default: null
+    },
     registered: { type: Date, default: Date.now },
     updated: { type: Date, default: null },
-})
+});
 
 //define o model do database user com todos os campos
 const users = mongoose.model('users', usersSchema)

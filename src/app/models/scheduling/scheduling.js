@@ -34,6 +34,18 @@ const schedulingSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, ref: 'clinic', 
         default: null 
     },
+    insurance: { 
+        type: String, 
+        maxlength: 120,
+        default: null
+    },
+    type_exam: { 
+        type: Number,
+        enum: { 
+            values: [1, 2] 
+        },
+        default: 1
+    },
     horary: {
         date: {
             type: String

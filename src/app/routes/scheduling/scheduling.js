@@ -7,8 +7,6 @@ const token = require("../../middlewares/check_token");
 router.use(token.check);
 router.post("", schedulingController.store);
 router.put("/:id", schedulingController.markOff);
-// router.get("/:id", );
-// router.delete("/:id", );
 
 
 module.exports = router;

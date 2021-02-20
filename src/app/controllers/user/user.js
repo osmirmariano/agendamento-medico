@@ -1,7 +1,9 @@
 "use strict";
-const { users } = require('../../models/index');
+const { users, locations } = require('../../models/index');
 var bcrypt = require('bcryptjs');
 var moment = require('moment');
+const mongoose = require('mongoose');
+const objectId = mongoose.Types.ObjectId;
 
 class User { 
     constructor() {}
@@ -14,7 +16,10 @@ class User {
         }
 
         try {
-            let userCreate = await users.create(userBody)
+            let createLocation = await locations.create(userBody.location);
+            userBody.location_id = new objectId(String(createLocation._id));
+            let userCreate = await users.create(userBody);
+
             res.status(200).json({
                 messageCode: 0,
                 message: {
@@ -39,9 +44,12 @@ class User {
         try {
             let body = {
                 ...req.body,
-                updated: moment().format("YYYY-MM-DD")
+                updated: moment().format("YYYY-MM-DD"),
             }
+            body.location.updated = moment().format("YYYY-MM-DD");
             let userUpdate = await users.findByIdAndUpdate({ _id: req.params.id }, body, { new: true });
+            await locations.findByIdAndUpdate({ _id: new objectId(String(createLocation._id))}, body.location);
+            
             res.status(200).json({
                 messageCode: 0,
                 message: {

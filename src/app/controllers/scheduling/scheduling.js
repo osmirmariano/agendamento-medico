@@ -1,8 +1,8 @@
 const { schedulings, controlers, clinics } = require("../../models/index");
 var moment = require('moment');
-var jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-const objectId = mongoose.Types.ObjectId
+var jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const objectId = mongoose.Types.ObjectId;
 
 class Scheduling { 
     constructor() {}
